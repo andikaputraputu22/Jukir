@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">Jukir</string>
+    <string name="already_have_account">Already have an Account?</string>
+    <string name="signin">Sign in</string>
+    <string name="signup">Sign up</string>
+    <string name="signup_now">Sign up now</string>
+    <string name="welcome_to_jukir">Welcome to JUKIR</string>
+    <string name="welcome_message">We are here to make your parking experience way better!</string>
+    <string name="are_you_new">Are you new here?</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="re_password">Re-Entry Password</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="signin_message">Welcome back,\nyou have been missed</string>
+    <string name="signup_message">Fill up your information.</string>
+    <string name="lets_signin">Lets sign you in</string>
+    <string name="agree_term">By signing up it means you agree to the Terms and Condition</string>
+    <string name="empty_username">Username cannot be empty!</string>
+    <string name="empty_password">Password cannot be empty!</string>
+    <string name="empty_email">Email cannot be empty!</string>
+    <string name="empty_phone_number">Phone number cannot be empty!</string>
+    <string name="empty_re_password">Re-entry password cannot be empty!</string>
+    <string name="password_not_match">Confirm password does not match!</string>
+    <string name="loading">Please wait</string>
+    <string name="success_login">Login successfully</string>
+    <string name="success_register">Register successfully</string>
+    <string name="server_error">Server error</string>
+    <string name="wrong_account">Your username or password is wrong</string>
+    <string name="must_agree">You must agree with our terms and condition!</string>
 </resources>

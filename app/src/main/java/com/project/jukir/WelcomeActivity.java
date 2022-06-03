@@ -7,25 +7,33 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.project.jukir.databinding.ActivityMainBinding;
+import com.project.jukir.databinding.ActivityWelcomeBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class WelcomeActivity extends AppCompatActivity {
 
     private Context context;
-    private ActivityMainBinding binding;
+    private ActivityWelcomeBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityWelcomeBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
         context = this;
 
-        binding.helloWorld.setOnClickListener(new View.OnClickListener() {
+        binding.signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.signinBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, LoginActivity.class);
                 startActivity(intent);
             }
         });
