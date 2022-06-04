@@ -30,4 +30,6 @@
     <string name="must_agree">You must agree with our terms and condition!</string>
     <string name="home_message">Lets find you a perfect Parking Place</string>
     <string name="search_parking">Search for a parking place</string>
+    <string name="list_building_label">Parking places near you</string>
+    <string name="signout">Sign Out</string>
 </resources>
