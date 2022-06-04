@@ -9,6 +9,7 @@ import com.project.jukir.api.Client;
 public class StaticController {
 
     public final static String SERVER = "https://jukir.softmedia.id/api/";
+    public final static String URL_PHOTO = "https://jukir.softmedia.id/photo/lokasi/";
     public final static ApiInterface api = Client.getClient().create(ApiInterface.class);
 
     public static String KEY_IS_LOGIN = "loginStatus";
