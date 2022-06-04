@@ -22,12 +22,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(view);
         context = this;
 
-        binding.helloWorld.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
+//        binding.helloWorld.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(context, RegisterActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 }
