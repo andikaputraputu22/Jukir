@@ -41,6 +41,7 @@
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:fontFamily="@font/poppinsbold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/photo" />
@@ -54,6 +55,7 @@
         android:textColor="@android:color/white"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:fontFamily="@font/poppinsbold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
@@ -67,6 +69,7 @@
         android:textColor="@color/btn_auth"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:fontFamily="@font/poppinsbold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

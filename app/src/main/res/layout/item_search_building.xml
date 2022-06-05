@@ -55,6 +55,7 @@
                 android:textColor="@color/btn_auth"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/poppinsbold"
                 android:maxLines="2" />
 
             <TextView
@@ -64,6 +65,7 @@
                 android:layout_marginStart="5dp"
                 android:text="Slot: 100"
                 android:textColor="@android:color/white"
+                android:fontFamily="@font/poppinsregular"
                 android:textSize="16sp"
                 android:maxLines="1" />
 

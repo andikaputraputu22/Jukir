@@ -46,6 +46,7 @@
             android:textColor="@android:color/white"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:fontFamily="@font/poppinsbold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageRegister" />
@@ -61,6 +62,7 @@
             android:textColor="@color/grey_20"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:fontFamily="@font/poppinsbold"
             app:layout_constraintTop_toBottomOf="@+id/signupLabel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -84,6 +86,7 @@
                 android:background="@drawable/bg_form"
                 android:hint="@string/username"
                 android:inputType="text"
+                android:fontFamily="@font/poppinsregular"
                 android:padding="14dp"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white" />
@@ -109,6 +112,7 @@
                 android:background="@drawable/bg_form"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
+                android:fontFamily="@font/poppinsregular"
                 android:padding="14dp"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white" />
@@ -134,6 +138,7 @@
                 android:background="@drawable/bg_form"
                 android:hint="@string/phone_number"
                 android:inputType="number"
+                android:fontFamily="@font/poppinsregular"
                 android:padding="14dp"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white" />
@@ -161,6 +166,7 @@
                 android:background="@drawable/bg_form"
                 android:hint="@string/password"
                 android:inputType="textPassword"
+                android:fontFamily="@font/poppinsregular"
                 android:padding="14dp"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white" />
@@ -188,6 +194,7 @@
                 android:background="@drawable/bg_form"
                 android:hint="@string/re_password"
                 android:inputType="textPassword"
+                android:fontFamily="@font/poppinsregular"
                 android:padding="14dp"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white" />
@@ -220,6 +227,7 @@
                 android:layout_marginStart="3dp"
                 android:text="@string/agree_term"
                 android:textColor="@color/btn_auth"
+                android:fontFamily="@font/poppinsregular"
                 android:textSize="16sp"
                 android:lineHeight="23sp"
                 tools:targetApi="p" />
@@ -239,6 +247,7 @@
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:fontFamily="@font/poppinsbold"
             app:layout_constraintTop_toBottomOf="@+id/viewAgreeTerm"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -264,7 +273,8 @@
                 android:text="@string/already_have_account"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/poppinsbold" />
 
             <TextView
                 android:id="@+id/signinBtn"
@@ -274,7 +284,8 @@
                 android:text="@string/signin"
                 android:textColor="@color/btn_auth"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/poppinsbold" />
 
         </LinearLayout>
 

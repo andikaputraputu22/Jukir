@@ -28,6 +28,7 @@
         android:textColor="@android:color/white"
         android:textSize="28sp"
         android:textStyle="bold"
+        android:fontFamily="@font/poppinsbold"
         app:layout_constraintBottom_toTopOf="@+id/welcomeMessage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -43,6 +44,7 @@
         android:textColor="@color/grey_20"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:fontFamily="@font/poppinsbold"
         app:layout_constraintBottom_toTopOf="@+id/signupBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -60,6 +62,7 @@
         android:textAllCaps="false"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:fontFamily="@font/poppinsbold"
         app:layout_constraintBottom_toTopOf="@+id/infoAccount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -83,7 +86,8 @@
             android:text="@string/already_have_account"
             android:textColor="@android:color/white"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="@font/poppinsbold" />
 
         <TextView
             android:id="@+id/signinBtn"
@@ -93,7 +97,8 @@
             android:text="@string/signin"
             android:textColor="@color/btn_auth"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="@font/poppinsbold" />
 
     </LinearLayout>
 

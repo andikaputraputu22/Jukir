@@ -48,6 +48,7 @@
             android:textColor="@android:color/white"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:fontFamily="@font/poppinsbold"
             app:layout_constraintBottom_toTopOf="@+id/signinMessage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -63,6 +64,7 @@
             android:textColor="@color/grey_20"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:fontFamily="@font/poppinsbold"
             app:layout_constraintBottom_toTopOf="@+id/fieldUsername"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -86,6 +88,7 @@
                 android:background="@drawable/bg_form"
                 android:hint="@string/username"
                 android:inputType="text"
+                android:fontFamily="@font/poppinsregular"
                 android:padding="14dp"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white" />
@@ -113,6 +116,7 @@
                 android:background="@drawable/bg_form"
                 android:hint="@string/password"
                 android:inputType="textPassword"
+                android:fontFamily="@font/poppinsregular"
                 android:padding="14dp"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white" />
@@ -132,6 +136,7 @@
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:fontFamily="@font/poppinsbold"
             app:layout_constraintBottom_toTopOf="@+id/infoAccount"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -155,7 +160,8 @@
                 android:text="@string/are_you_new"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/poppinsbold" />
 
             <TextView
                 android:id="@+id/signupBtn"
@@ -165,7 +171,8 @@
                 android:text="@string/signup_now"
                 android:textColor="@color/btn_auth"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/poppinsbold" />
 
         </LinearLayout>
 
