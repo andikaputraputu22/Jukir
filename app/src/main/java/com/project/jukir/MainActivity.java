@@ -50,8 +50,14 @@ public class MainActivity extends AppCompatActivity {
 
         token = SharedPreference.getSharedPreference(context, StaticController.KEY_TOKEN);
 
-        initList();
         initAction();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        initList();
+        layoutMainBinding.search.setText("");
     }
 
     private void initList() {
@@ -106,7 +112,11 @@ public class MainActivity extends AppCompatActivity {
                     layoutMainBinding.search.clearFocus();
                     InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     inputMethodManager.hideSoftInputFromWindow(layoutMainBinding.search.getWindowToken(), 0);
-
+                    if (layoutMainBinding.search.getText().toString().length() != 0) {
+                        Intent intent = new Intent(context, SearchActivity.class);
+                        intent.putExtra("searchKeyword", layoutMainBinding.search.getText().toString());
+                        startActivity(intent);
+                    }
                     return true;
                 }
                 return false;
