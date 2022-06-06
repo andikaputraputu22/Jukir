@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private SideMenuBinding sideMenuBinding;
     private AdapterBuilding adapterBuilding;
     private List<DataLocation> itemBuilding;
-    private String token;
+    private String token, name, email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,10 @@ public class MainActivity extends AppCompatActivity {
         context = this;
 
         token = SharedPreference.getSharedPreference(context, StaticController.KEY_TOKEN);
+        name = SharedPreference.getSharedPreference(context, StaticController.KEY_NAME);
+        email = SharedPreference.getSharedPreference(context, StaticController.KEY_EMAIL);
 
+        initView();
         initAction();
     }
 
@@ -58,6 +61,17 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         initList();
         layoutMainBinding.search.setText("");
+    }
+
+    private void initView() {
+        sideMenuBinding.name.setText(name);
+        sideMenuBinding.email.setText(email);
+        layoutMainBinding.name.setText(name + ",");
+
+        if (StaticController.isUser(context)) {
+            sideMenuBinding.changePassword.setVisibility(View.VISIBLE);
+            sideMenuBinding.topUp.setVisibility(View.VISIBLE);
+        }
     }
 
     private void initList() {
@@ -102,6 +116,35 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 binding.drawerLayout.closeDrawer(binding.navigationView, true);
+            }
+        });
+
+        sideMenuBinding.changePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.drawerLayout.closeDrawer(binding.navigationView, true);
+                Intent intent = new Intent(context, ChangePasswordActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        sideMenuBinding.topUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.drawerLayout.closeDrawer(binding.navigationView, true);
+                Intent intent = new Intent(context, WalletActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        sideMenuBinding.signout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.drawerLayout.closeDrawer(binding.navigationView, true);
+                SharedPreference.clearSharedPreference(context);
+                Intent intent = new Intent(context, LoginActivity.class);
+                startActivity(intent);
+                finishAffinity();
             }
         });
 

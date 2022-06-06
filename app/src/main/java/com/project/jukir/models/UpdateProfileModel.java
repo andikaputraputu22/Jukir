@@ -2,8 +2,8 @@ package com.project.jukir.models;
 
 import java.io.Serializable;
 
-public class LoginModel implements Serializable {
+public class UpdateProfileModel implements Serializable {
 
     public int status;
-    public DataUser data;
+    public String data;
 }

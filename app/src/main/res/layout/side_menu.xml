@@ -61,6 +61,36 @@
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <TextView
+        android:id="@+id/change_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="48dp"
+        android:text="@string/change_password"
+        android:textColor="@color/btn_auth"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppinsregular"
+        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/top_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="16dp"
+        android:text="@string/topup"
+        android:textColor="@color/btn_auth"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppinsregular"
+        app:layout_constraintTop_toBottomOf="@+id/change_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
         android:id="@+id/signout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

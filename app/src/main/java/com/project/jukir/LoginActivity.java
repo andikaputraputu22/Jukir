@@ -95,10 +95,20 @@ public class LoginActivity extends AppCompatActivity {
                             if (data.status == 200) {
                                 Toast.makeText(context, getString(R.string.success_login), Toast.LENGTH_SHORT).show();
                                 SharedPreference.writeSharedPreference(context, StaticController.KEY_IS_LOGIN, "1");
-                                SharedPreference.writeSharedPreference(context, StaticController.KEY_TOKEN, data.data);
-                                Intent intent = new Intent(context, MainActivity.class);
-                                startActivity(intent);
-                                finishAffinity();
+                                SharedPreference.writeSharedPreference(context, StaticController.KEY_ROLE, String.valueOf(data.data.user.role));
+                                SharedPreference.writeSharedPreference(context, StaticController.KEY_TOKEN, data.data.token);
+                                SharedPreference.writeSharedPreference(context, StaticController.KEY_NAME, data.data.user.nama);
+                                SharedPreference.writeSharedPreference(context, StaticController.KEY_EMAIL, data.data.user.email);
+                                SharedPreference.writeSharedPreference(context, StaticController.KEY_PASSWORD, password);
+                                if (data.data.user.role == StaticController.IS_ADMIN) {
+
+                                } else if (data.data.user.role == StaticController.IS_EMPLOYEE) {
+
+                                } else {
+                                    Intent intent = new Intent(context, MainActivity.class);
+                                    startActivity(intent);
+                                    finishAffinity();
+                                }
                             } else {
                                 Toast.makeText(context, getString(R.string.wrong_account), Toast.LENGTH_SHORT).show();
                             }

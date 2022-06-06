@@ -3,6 +3,7 @@ package com.project.jukir.api;
 import com.project.jukir.models.LocationModel;
 import com.project.jukir.models.LoginModel;
 import com.project.jukir.models.RegisterModel;
+import com.project.jukir.models.UpdateProfileModel;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -30,4 +31,11 @@ public interface ApiInterface {
     @GET("lokasi/list")
     Call<LocationModel> listBuilding(@Header("Authorization") String token,
                                      @Query("keyword") String keyword);
+
+    @FormUrlEncoded
+    @POST("profile/update")
+    Call<UpdateProfileModel> updateProfile(@Header("Authorization") String token,
+                                           @Field("old_password") String old_password,
+                                           @Field("password") String password,
+                                           @Field("password_confirmation") String password_confirmation);
 }

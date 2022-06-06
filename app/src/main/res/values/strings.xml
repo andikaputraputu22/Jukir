@@ -9,7 +9,10 @@
     <string name="are_you_new">Are you new here?</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
     <string name="re_password">Re-Entry Password</string>
+    <string name="re_new_password">Re-Entry New Password</string>
     <string name="email">Email</string>
     <string name="phone_number">Phone Number</string>
     <string name="signin_message">Welcome back,\nyou have been missed</string>
@@ -18,9 +21,12 @@
     <string name="agree_term">By signing up it means you agree to the Terms and Condition</string>
     <string name="empty_username">Username cannot be empty!</string>
     <string name="empty_password">Password cannot be empty!</string>
+    <string name="empty_old_password">Old password cannot be empty!</string>
+    <string name="empty_new_password">New password cannot be empty!</string>
     <string name="empty_email">Email cannot be empty!</string>
     <string name="empty_phone_number">Phone number cannot be empty!</string>
     <string name="empty_re_password">Re-entry password cannot be empty!</string>
+    <string name="empty_re_new_password">Re-entry new password cannot be empty!</string>
     <string name="password_not_match">Confirm password does not match!</string>
     <string name="loading">Please wait</string>
     <string name="success_login">Login successfully</string>
@@ -33,4 +39,10 @@
     <string name="list_building_label">Parking places near you</string>
     <string name="signout">Sign Out</string>
     <string name="search">Search</string>
+    <string name="change_password">Change Password</string>
+    <string name="change_password_message">Do not Forget!</string>
+    <string name="submit_new_password">Submit New Password</string>
+    <string name="topup">Top Up</string>
+    <string name="wrong_old_password">Your old password does not match!</string>
+    <string name="success_change_password">Your password has been change successfully!</string>
 </resources>
