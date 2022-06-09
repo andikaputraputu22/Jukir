@@ -11,5 +11,6 @@ public class DataLocation implements Serializable {
     public Object created_at;
     public Object updated_at;
     public Object deleted_at;
+    public int slot_tersedia;
     public List<LokasiLantai> lokasi_lantai;
 }

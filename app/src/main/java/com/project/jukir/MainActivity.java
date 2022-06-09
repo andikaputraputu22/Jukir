@@ -53,13 +53,13 @@ public class MainActivity extends AppCompatActivity {
         email = SharedPreference.getSharedPreference(context, StaticController.KEY_EMAIL);
 
         initView();
-        initAction();
     }
 
     @Override
     public void onStart() {
         super.onStart();
         initList();
+        initAction();
         layoutMainBinding.search.setText("");
     }
 
@@ -105,6 +105,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initAction() {
+        adapterBuilding.setOnItemClickListener(new AdapterBuilding.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, DataLocation obj, int position) {
+                Intent intent = new Intent(context, SlotParkingActivity.class);
+                intent.putExtra("dataBuilding", obj);
+                startActivity(intent);
+            }
+        });
+
         layoutMainBinding.photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

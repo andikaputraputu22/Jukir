@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -117,6 +118,15 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void initAction() {
+        adapterBuilding.setOnItemClickListener(new AdapterSearchBuilding.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, DataLocation obj, int position) {
+                Intent intent = new Intent(context, SlotParkingActivity.class);
+                intent.putExtra("dataBuilding", obj);
+                startActivity(intent);
+            }
+        });
+
         binding.search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {

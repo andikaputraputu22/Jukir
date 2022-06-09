@@ -34,6 +34,8 @@ public class AlertActivity extends AppCompatActivity {
     private void initView() {
         if (fromWhere.equals(StaticController.FROM_CHANGE_PASSWORD)) {
             binding.messageAlert.setText(getString(R.string.success_change_password));
+        } else if (fromWhere.equals(StaticController.FROM_TOPUP)) {
+            binding.messageAlert.setText(getString(R.string.success_topup));
         }
     }
 
@@ -43,6 +45,10 @@ public class AlertActivity extends AppCompatActivity {
             public void run() {
                 if (fromWhere.equals(StaticController.FROM_CHANGE_PASSWORD)) {
                     Intent intent = new Intent(context, LoginActivity.class);
+                    startActivity(intent);
+                    finishAffinity();
+                } else if (fromWhere.equals(StaticController.FROM_TOPUP)) {
+                    Intent intent = new Intent(context, MainActivity.class);
                     startActivity(intent);
                     finishAffinity();
                 }

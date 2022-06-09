@@ -12,7 +12,12 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.project.jukir.databinding.ActivityRegisterBinding;
+import com.project.jukir.models.RegisterModel;
 import com.project.jukir.utils.StaticController;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -97,6 +102,30 @@ public class RegisterActivity extends AppCompatActivity {
     private void register(String username, String email, String phoneNumber, String password, String rePassword) {
         progressDialog = StaticController.showProgressDialog(progressDialog, context, getString(R.string.loading));
         progressDialog.show();
-//        StaticController.api
+        StaticController.api.register(username, email, password, rePassword, phoneNumber)
+                .enqueue(new Callback<RegisterModel>() {
+                    @Override
+                    public void onResponse(Call<RegisterModel> call, Response<RegisterModel> response) {
+                        progressDialog.dismiss();
+                        if (response.code() == 200) {
+                            if (response.body().status == 200) {
+                                Toast.makeText(context, getString(R.string.success_register), Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(context, LoginActivity.class);
+                                startActivity(intent);
+                                finishAffinity();
+                            } else {
+                                Toast.makeText(context, getString(R.string.server_error), Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(context, getString(R.string.server_error), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<RegisterModel> call, Throwable t) {
+                        progressDialog.dismiss();
+                        Toast.makeText(context, getString(R.string.server_error), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }

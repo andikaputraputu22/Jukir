@@ -6,10 +6,14 @@ import android.content.Context;
 import com.project.jukir.api.ApiInterface;
 import com.project.jukir.api.Client;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class StaticController {
 
     public final static String SERVER = "https://jukir.softmedia.id/api/";
     public final static String URL_PHOTO = "https://jukir.softmedia.id/photo/lokasi/";
+    public final static String URL_PHOTO_WALLET = "https://jukir.softmedia.id/photo/metode-pembayaran/";
     public final static ApiInterface api = Client.getClient().create(ApiInterface.class);
 
     public static String KEY_IS_LOGIN = "loginStatus";
@@ -20,6 +24,7 @@ public class StaticController {
     public static String KEY_PASSWORD = "passwordUser";
 
     public static String FROM_CHANGE_PASSWORD = "changePasswordPage";
+    public static String FROM_TOPUP = "topupPage";
 
     public static int IS_ADMIN = 0;
     public static int IS_EMPLOYEE = 1;
@@ -47,5 +52,12 @@ public class StaticController {
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setCancelable(false);
         return progressDialog;
+    }
+
+    public static NumberFormat getFormatCurrency() {
+        NumberFormat numberFormat;
+        Locale locale = new Locale("in", "ID");
+        numberFormat = NumberFormat.getCurrencyInstance(locale);
+        return numberFormat;
     }
 }
