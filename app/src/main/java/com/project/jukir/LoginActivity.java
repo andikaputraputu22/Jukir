@@ -99,9 +99,12 @@ public class LoginActivity extends AppCompatActivity {
                                 SharedPreference.writeSharedPreference(context, StaticController.KEY_TOKEN, data.data.token);
                                 SharedPreference.writeSharedPreference(context, StaticController.KEY_NAME, data.data.user.username);
                                 SharedPreference.writeSharedPreference(context, StaticController.KEY_EMAIL, data.data.user.email);
+                                SharedPreference.writeSharedPreference(context, StaticController.KEY_ID_USER, String.valueOf(data.data.user.id));
                                 SharedPreference.writeSharedPreference(context, StaticController.KEY_PASSWORD, password);
                                 if (data.data.user.role == StaticController.IS_ADMIN) {
-
+                                    Intent intent = new Intent(context, AdminMainActivity.class);
+                                    startActivity(intent);
+                                    finishAffinity();
                                 } else if (data.data.user.role == StaticController.IS_EMPLOYEE) {
 
                                 } else {

@@ -65,7 +65,7 @@ public class AdapterSearchBuilding extends RecyclerView.Adapter<RecyclerView.Vie
             final OriginalViewHolder view = (OriginalViewHolder) holder;
 
             DataLocation dataLocation = items.get(position);
-            String slot = "Slot: 500";
+            String slot = "Slot: " + dataLocation.slot_tersedia;
             view.namePlace.setText(dataLocation.nama_lokasi);
             view.slotPlace.setText(slot);
             Picasso.with(ctx).load(StaticController.URL_PHOTO + dataLocation.gambar).into(view.photoPlace);

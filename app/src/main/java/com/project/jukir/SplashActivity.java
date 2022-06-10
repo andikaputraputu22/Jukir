@@ -22,9 +22,15 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Thread() {
             @Override
             public void run() {
-                Intent intent;
+                Intent intent = new Intent();
                 if (StaticController.isLogin(context)) {
-                    intent = new Intent(context, MainActivity.class);
+                    if (StaticController.roleUser(context).equals(StaticController.ROLE_USER)) {
+                        intent = new Intent(context, MainActivity.class);
+                    } else if (StaticController.roleUser(context).equals(StaticController.ROLE_ADMIN)) {
+                        intent = new Intent(context, AdminMainActivity.class);
+                    } else {
+
+                    }
                 } else {
                     intent = new Intent(context, WelcomeActivity.class);
                 }

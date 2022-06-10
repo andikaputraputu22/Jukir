@@ -4,6 +4,7 @@ import com.project.jukir.models.LocationDetailModel;
 import com.project.jukir.models.LocationModel;
 import com.project.jukir.models.LoginModel;
 import com.project.jukir.models.RegisterModel;
+import com.project.jukir.models.ReportModel;
 import com.project.jukir.models.TopupModel;
 import com.project.jukir.models.UpdateProfileModel;
 import com.project.jukir.models.WalletModel;
@@ -55,4 +56,9 @@ public interface ApiInterface {
     Call<TopupModel> topupSaldo(@Header("Authorization") String token,
                                 @Field("metode_pembayaran_id") String metode_pembayaran_id,
                                 @Field("jumlah") String jumlah);
+
+    @GET("report/list-by-date/{date}/{id}")
+    Call<ReportModel> adminReport(@Header("Authorization") String token,
+                                  @Path("date") String date,
+                                  @Path("id") String id);
 }

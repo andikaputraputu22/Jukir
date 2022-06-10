@@ -54,4 +54,10 @@
     <string name="filled">Filled</string>
     <string name="empty">Empty</string>
     <string name="parking_slots">Parking Slots</string>
+    <string name="see_parking_slots">See Parking Slots</string>
+    <string name="report">Report</string>
+    <string name="total_car">Total Car</string>
+    <string name="total_transaction">Total Transaction</string>
+    <string name="total_income">Total Income</string>
+    <string name="click_see_detail">Click here to see detail</string>
 </resources>
