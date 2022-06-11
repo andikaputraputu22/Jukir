@@ -27,6 +27,7 @@
     <string name="empty_phone_number">Phone number cannot be empty!</string>
     <string name="empty_re_password">Re-entry password cannot be empty!</string>
     <string name="empty_re_new_password">Re-entry new password cannot be empty!</string>
+    <string name="empty_ticket_number">Ticket number cannot be empty!</string>
     <string name="password_not_match">Confirm password does not match!</string>
     <string name="loading">Please wait</string>
     <string name="success_login">Login successfully</string>
@@ -60,4 +61,14 @@
     <string name="total_transaction">Total Transaction</string>
     <string name="total_income">Total Income</string>
     <string name="click_see_detail">Click here to see detail</string>
+    <string name="scan_parking_tickets">Scan Parking Tickets</string>
+    <string name="enter_ticket_number">Or, Enter Ticket Number</string>
+    <string name="enter_number">Enter Number</string>
+    <string name="submit">Submit</string>
+    <string name="please_scan">Please Scan Barcode Inside This Area</string>
+    <string name="auto_scan">Scanning Will Start Automatically</string>
+    <string name="total_cost">Total Cost</string>
+    <string name="cash">Cash</string>
+    <string name="ecard">E-Card</string>
+    <string name="scan">Scan</string>
 </resources>

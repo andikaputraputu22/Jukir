@@ -3,6 +3,11 @@
     package="com.project.jukir">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
 
     <application
         android:name=".JukirApp"
@@ -12,6 +17,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".ChoosePaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ScanEmployeeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EmployeeMainActivity"
+            android:exported="false" />
         <activity
             android:name=".DetailReportActivity"
             android:exported="false" />

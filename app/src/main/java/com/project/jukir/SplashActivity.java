@@ -29,7 +29,7 @@ public class SplashActivity extends AppCompatActivity {
                     } else if (StaticController.roleUser(context).equals(StaticController.ROLE_ADMIN)) {
                         intent = new Intent(context, AdminMainActivity.class);
                     } else {
-
+                        intent = new Intent(context, EmployeeMainActivity.class);
                     }
                 } else {
                     intent = new Intent(context, WelcomeActivity.class);

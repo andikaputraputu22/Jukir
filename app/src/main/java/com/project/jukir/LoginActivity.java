@@ -106,7 +106,9 @@ public class LoginActivity extends AppCompatActivity {
                                     startActivity(intent);
                                     finishAffinity();
                                 } else if (data.data.user.role == StaticController.IS_EMPLOYEE) {
-
+                                    Intent intent = new Intent(context, EmployeeMainActivity.class);
+                                    startActivity(intent);
+                                    finishAffinity();
                                 } else {
                                     Intent intent = new Intent(context, MainActivity.class);
                                     startActivity(intent);
