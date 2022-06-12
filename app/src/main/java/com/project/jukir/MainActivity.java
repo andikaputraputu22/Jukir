@@ -114,6 +114,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        layoutMainBinding.scan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ScanUserActivity.class);
+                intent.putExtra("scanLabel", getString(R.string.label_scan_building));
+                startActivity(intent);
+            }
+        });
+
         layoutMainBinding.photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

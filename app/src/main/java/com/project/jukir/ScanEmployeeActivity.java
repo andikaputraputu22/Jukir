@@ -19,14 +19,27 @@ import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.DecodeCallback;
 import com.google.zxing.Result;
 import com.project.jukir.databinding.ActivityScanEmployeeBinding;
+import com.project.jukir.models.DetailBooking;
+import com.project.jukir.models.ResponseSuccess;
+import com.project.jukir.utils.SharedPreference;
+import com.project.jukir.utils.StaticController;
+
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import timber.log.Timber;
 
 public class ScanEmployeeActivity extends AppCompatActivity {
 
     private Context context;
     private ActivityScanEmployeeBinding binding;
     private CodeScanner codeScanner;
+    private String token, idUser;
 
     private final int PERMISSION_CAMERA = 1;
+    private final int DEFAULT_PRICE = 5000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +48,9 @@ public class ScanEmployeeActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
         context = this;
+
+        token = SharedPreference.getSharedPreference(context, StaticController.KEY_TOKEN);
+        idUser = SharedPreference.getSharedPreference(context, StaticController.KEY_ID_USER);
 
         cameraPermission();
         initBack();
@@ -87,13 +103,113 @@ public class ScanEmployeeActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Intent intent = new Intent(context, ChoosePaymentActivity.class);
-                        intent.putExtra("ticketNumber", result.getText());
-                        startActivity(intent);
+                        findDataBooking(result.getText());
                     }
                 });
             }
         });
+    }
+
+    private void updateEmployee(String lokasi_lantai_parkir_id, String keluar, int total_harga, String idBooking, String dateMasuk, String parkingTime, String parkingSpot, String parkingFee, String total_harga_formatted, String location) {
+        RequestBody reqLokasiLantaiParkirId = RequestBody.create(MultipartBody.FORM, lokasi_lantai_parkir_id);
+        RequestBody reqKeluar = RequestBody.create(MultipartBody.FORM, keluar);
+        RequestBody reqTotalHarga = RequestBody.create(MultipartBody.FORM, String.valueOf(total_harga));
+        RequestBody reqEmployeeId = RequestBody.create(MultipartBody.FORM, idUser);
+
+        StaticController.api.updateEmployee("Bearer " + token, reqLokasiLantaiParkirId, reqKeluar, reqTotalHarga, reqEmployeeId, idBooking)
+                .enqueue(new Callback<ResponseSuccess>() {
+                    @Override
+                    public void onResponse(Call<ResponseSuccess> call, Response<ResponseSuccess> response) {
+                        if (response.code() == 200) {
+                            if (response.body().status == 200) {
+                                Intent intent = new Intent(context, ChoosePaymentActivity.class);
+                                intent.putExtra("idBooking", idBooking);
+                                intent.putExtra("totalHarga", total_harga_formatted);
+                                intent.putExtra("dateMasuk", dateMasuk);
+                                intent.putExtra("parkingTime", parkingTime);
+                                intent.putExtra("parkingSpot", parkingSpot);
+                                intent.putExtra("parkingFee", parkingFee);
+                                intent.putExtra("location", location);
+                                intent.putExtra("totalHargaInt", total_harga);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(context, getString(R.string.server_error), Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(context, getString(R.string.server_error), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseSuccess> call, Throwable t) {
+                        Toast.makeText(context, getString(R.string.server_error), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void findDataBooking(String id) {
+        StaticController.api.findBooking("Bearer " + token, id)
+                .enqueue(new Callback<DetailBooking>() {
+                    @Override
+                    public void onResponse(Call<DetailBooking> call, Response<DetailBooking> response) {
+                        if (response.code() == 200) {
+                            DetailBooking data = response.body();
+                            if (data.data != null) {
+                                processData(data);
+                            } else {
+                                Toast.makeText(context, getString(R.string.data_not_found), Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(context, getString(R.string.server_error), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<DetailBooking> call, Throwable t) {
+                        Toast.makeText(context, getString(R.string.server_error), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void processData(DetailBooking data) {
+        String idBooking = String.valueOf(data.data.id);
+        String keluar = StaticController.getCurrentDate("yyyy-MM-dd HH:mm:ss");
+        String lokasi_lantai_parkir_id = String.valueOf(data.data.lokasi_lantai_parkir.id);
+        int hour = StaticController.checkDuration(keluar, data.data.masuk);
+        int second = StaticController.timeToSecond(keluar, data.data.masuk);
+        int total_harga = DEFAULT_PRICE * hour;
+        String dateMasuk = StaticController.dateFormatted(data.data.masuk, "yyyy-MM-dd HH:mm:ss", "d MMM yyyy");
+        String parkingTime = StaticController.getDurationString(second);
+        String parkingSpot = data.data.lokasi_lantai_parkir.spot;
+        String parkingFee = StaticController.getFormatCurrency().format(DEFAULT_PRICE) + " x " + hour;
+        String total_harga_formatted = StaticController.getFormatCurrency().format(DEFAULT_PRICE * hour);
+        String location = data.data.lokasi.nama_lokasi;
+
+        updateEmployee(lokasi_lantai_parkir_id, keluar, total_harga, idBooking, dateMasuk, parkingTime, parkingSpot, parkingFee, total_harga_formatted, location);
+    }
+
+    private void getDataBooking(String code) {
+        StaticController.api.findBookingByCode("Bearer " + token, code)
+                .enqueue(new Callback<DetailBooking>() {
+                    @Override
+                    public void onResponse(Call<DetailBooking> call, Response<DetailBooking> response) {
+                        if (response.code() == 200) {
+                            DetailBooking data = response.body();
+                            if (data.data != null) {
+                                processData(data);
+                            } else {
+                                Toast.makeText(context, getString(R.string.data_not_found), Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(context, getString(R.string.server_error), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<DetailBooking> call, Throwable t) {
+                        Toast.makeText(context, getString(R.string.server_error), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void initAction() {
@@ -105,9 +221,7 @@ public class ScanEmployeeActivity extends AppCompatActivity {
                 if (code.length() == 0) {
                     Toast.makeText(context, getString(R.string.empty_ticket_number), Toast.LENGTH_SHORT).show();
                 } else {
-                    Intent intent = new Intent(context, ChoosePaymentActivity.class);
-                    intent.putExtra("ticketNumber", code);
-                    startActivity(intent);
+                    getDataBooking(code);
                 }
             }
         });

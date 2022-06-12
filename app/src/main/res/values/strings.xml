@@ -47,6 +47,7 @@
     <string name="wrong_old_password">Your old password does not match</string>
     <string name="success_change_password">Your password has been change successfully</string>
     <string name="success_topup">Top up successfully</string>
+    <string name="success_pay">Driver payment has been successfully</string>
     <string name="e_wallet">E-Wallet</string>
     <string name="input">Input</string>
     <string name="input_amount">Input Amount</string>
@@ -71,4 +72,22 @@
     <string name="cash">Cash</string>
     <string name="ecard">E-Card</string>
     <string name="scan">Scan</string>
+    <string name="label_scan_building">Scan Barcode to Start Collecting E-Ticket</string>
+    <string name="label_scan_slot">Scan Barcode to Start Saving Your Parking Location</string>
+    <string name="total_charged">Total charged:</string>
+    <string name="total_change">Total change:</string>
+    <string name="detail_parking">Detail Parking</string>
+    <string name="detail_payment">Detail Payment</string>
+    <string name="date">Date</string>
+    <string name="parking_time">Parking Time</string>
+    <string name="parking_spot">Parking Spot</string>
+    <string name="parking_fee">Parking Fee</string>
+    <string name="choose_payment">Choose Payment</string>
+    <string name="ecard_payment">E-Card Payment</string>
+    <string name="cash_payment">Cash Payment</string>
+    <string name="pay">Pay</string>
+    <string name="input_driver_money">Input Driver Money</string>
+    <string name="done">Done</string>
+    <string name="driver_money">Driver Money</string>
+    <string name="data_not_found">Data not found</string>
 </resources>

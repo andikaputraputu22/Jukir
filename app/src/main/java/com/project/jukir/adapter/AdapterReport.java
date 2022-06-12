@@ -69,7 +69,7 @@ public class AdapterReport extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             view.nameUser.setText(data.user.username);
             view.nameEmployee.setText(data.employee.nama);
             view.price.setText(price);
-            view.date.setText(StaticController.dateFormatted(data.keluar));
+            view.date.setText(StaticController.dateFormatted(data.keluar, "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd"));
             view.paymentMethod.setText(data.metode_pembayaran.nama_metode_pembayaran);
         }
     }

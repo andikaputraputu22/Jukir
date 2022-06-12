@@ -18,6 +18,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".MoneyChangeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentEmployeeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ScanUserActivity"
+            android:exported="false" />
+        <activity
             android:name=".ChoosePaymentActivity"
             android:exported="false" />
         <activity

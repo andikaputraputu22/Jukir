@@ -9,6 +9,8 @@ import android.os.Handler;
 import android.view.View;
 
 import com.project.jukir.databinding.ActivityAlertBinding;
+import com.project.jukir.models.DataPay;
+import com.project.jukir.models.DataReport;
 import com.project.jukir.utils.StaticController;
 
 public class AlertActivity extends AppCompatActivity {
@@ -16,6 +18,7 @@ public class AlertActivity extends AppCompatActivity {
     private Context context;
     private ActivityAlertBinding binding;
     private String fromWhere;
+    private DataPay dataPay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,7 @@ public class AlertActivity extends AppCompatActivity {
         context = this;
 
         fromWhere = (String) getIntent().getSerializableExtra("fromWhere");
+        dataPay = (DataPay) getIntent().getSerializableExtra("dataPay");
 
         initView();
         initAction();
@@ -36,6 +40,8 @@ public class AlertActivity extends AppCompatActivity {
             binding.messageAlert.setText(getString(R.string.success_change_password));
         } else if (fromWhere.equals(StaticController.FROM_TOPUP)) {
             binding.messageAlert.setText(getString(R.string.success_topup));
+        } else if (fromWhere.equals(StaticController.FROM_ECARD_PAY_EMPLOYEE) || fromWhere.equals(StaticController.FROM_CASH_PAY_EMPLOYEE)) {
+            binding.messageAlert.setText(getString(R.string.success_pay));
         }
     }
 
@@ -49,6 +55,15 @@ public class AlertActivity extends AppCompatActivity {
                     finishAffinity();
                 } else if (fromWhere.equals(StaticController.FROM_TOPUP)) {
                     Intent intent = new Intent(context, MainActivity.class);
+                    startActivity(intent);
+                    finishAffinity();
+                } else if (fromWhere.equals(StaticController.FROM_ECARD_PAY_EMPLOYEE)) {
+                    Intent intent = new Intent(context, EmployeeMainActivity.class);
+                    startActivity(intent);
+                    finishAffinity();
+                } else if (fromWhere.equals(StaticController.FROM_CASH_PAY_EMPLOYEE)) {
+                    Intent intent = new Intent(context, MoneyChangeActivity.class);
+                    intent.putExtra("dataPay", dataPay);
                     startActivity(intent);
                     finishAffinity();
                 }

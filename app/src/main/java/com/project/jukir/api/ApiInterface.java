@@ -1,20 +1,25 @@
 package com.project.jukir.api;
 
+import com.project.jukir.models.DetailBooking;
 import com.project.jukir.models.LocationDetailModel;
 import com.project.jukir.models.LocationModel;
 import com.project.jukir.models.LoginModel;
 import com.project.jukir.models.RegisterModel;
 import com.project.jukir.models.ReportModel;
+import com.project.jukir.models.ResponseSuccess;
 import com.project.jukir.models.TopupModel;
 import com.project.jukir.models.UpdateProfileModel;
 import com.project.jukir.models.WalletModel;
 
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -61,4 +66,21 @@ public interface ApiInterface {
     Call<ReportModel> adminReport(@Header("Authorization") String token,
                                   @Path("date") String date,
                                   @Path("id") String id);
+
+    @GET("booking/find/{id}")
+    Call<DetailBooking> findBooking(@Header("Authorization") String token,
+                                    @Path("id") String id);
+
+    @GET("booking/find-by-kode-booking/{code}")
+    Call<DetailBooking> findBookingByCode(@Header("Authorization") String token,
+                                          @Path("code") String code);
+
+    @Multipart
+    @POST("booking/update/{id}")
+    Call<ResponseSuccess> updateEmployee(@Header("Authorization") String token,
+                                         @Part("lokasi_lantai_parkir_id") RequestBody lokasi_lantai_parkir_id,
+                                         @Part("keluar") RequestBody keluar,
+                                         @Part("total_harga") RequestBody total_harga,
+                                         @Part("employee_id") RequestBody employee_id,
+                                         @Path("id") String id);
 }

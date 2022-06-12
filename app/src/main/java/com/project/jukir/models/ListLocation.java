@@ -18,6 +18,8 @@ public class ListLocation implements Serializable {
     public String created_at;
     public String updated_at;
     public Object deleted_at;
+    public LokasiLantai lokasi_lantai;
+    public LokasiLantaiParkir lokasi_lantai_parkir;
     public DataLocation lokasi;
     public PaymentMethod metode_pembayaran;
     public User user;

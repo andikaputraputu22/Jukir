@@ -29,6 +29,8 @@ public class StaticController {
 
     public static String FROM_CHANGE_PASSWORD = "changePasswordPage";
     public static String FROM_TOPUP = "topupPage";
+    public static String FROM_ECARD_PAY_EMPLOYEE = "ecardPayEmployeePage";
+    public static String FROM_CASH_PAY_EMPLOYEE = "cashPayEmployeePage";
 
     public static int IS_ADMIN = 0;
     public static int IS_EMPLOYEE = 1;
@@ -86,10 +88,10 @@ public class StaticController {
         return newFormat.format(new Date(dateTime));
     }
 
-    public static String dateFormatted(String date) {
+    public static String dateFormatted(String date, String oldPattern, String newPattern) {
         String result = "";
-        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf1 = new SimpleDateFormat(oldPattern);
+        SimpleDateFormat sdf2 = new SimpleDateFormat(newPattern);
         try {
             Date parseDate = sdf1.parse(date);
             long timestamp = parseDate.getTime();
@@ -98,5 +100,70 @@ public class StaticController {
             e.printStackTrace();
         }
         return result;
+    }
+
+    public static int checkDuration(String currentDate, String lastDate) {
+        int result = 0;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            Date oldDate = dateFormat.parse(lastDate);
+            Date newDate = dateFormat.parse(currentDate);
+            double diff = newDate.getTime() - oldDate.getTime();
+            double seconds = diff/1000;
+            double minutes = seconds/60;
+            double hours = minutes/60;
+            result = round(hours);
+
+            return result;
+        } catch (ParseException e) {
+            return result;
+        }
+    }
+
+    public static int timeToSecond(String currentDate, String lastDate) {
+        int result = 0;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        try {
+            Date oldDate = dateFormat.parse(lastDate);
+            Date newDate = dateFormat.parse(currentDate);
+            long diff = newDate.getTime() - oldDate.getTime();
+            long seconds = diff/1000;
+            result = (int) seconds;
+
+            return result;
+        } catch (ParseException e) {
+            return result;
+        }
+    }
+
+    public static int round(double d) {
+        double dAbs = Math.abs(d);
+        int i = (int) dAbs;
+        double result = dAbs - (double) i;
+        if (result < 0.1) {
+            return d < 0 ? -i : i;
+        } else {
+            return d < 0 ? -(i + 1) : i + 1;
+        }
+    }
+
+    public static String twoDigitString(int number) {
+        if (number == 0) {
+            return "00";
+        }
+
+        if (number / 10 == 0) {
+            return "0" + number;
+        }
+
+        return String.valueOf(number);
+    }
+
+    public static String getDurationString(int seconds) {
+        int hours = seconds / 3600;
+        int minutes = (seconds % 3600) / 60;
+        seconds = seconds % 60;
+
+        return twoDigitString(hours) + ":" + twoDigitString(minutes) + ":" + twoDigitString(seconds);
     }
 }
